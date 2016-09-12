@@ -1,0 +1,95 @@
+
+html { 
+  height: 100% ;
+  
+}
+
+body { 
+  height: 100%; margin: 0; padding: 0 
+}
+
+h1 { 
+  position:absolute; 
+}
+
+.floating-legend{
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  width: 100%;
+  padding: 5px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 5;
+  color: black;
+  font-size: 32px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.floating-header{
+  display: flex;
+  justify-content:flex-start;
+  align-items:center;
+  width: 100%;
+  padding: 50px;
+  position: absolute;
+  top: 0px;
+  z-index: 10;
+  color: black;
+  font-size: 36px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  margin-right: 50px;
+}
+
+.title{
+  margin: 10px;
+}
+
+.progress{
+  margin-bottom: 0px;
+  height: 10px;
+}
+
+.principal-container{
+  height: 100% ;
+  width: 100%;
+  display: flex;
+}
+
+.progress-bar-container {
+  position: fixed;
+  width: 0.5%;
+  z-index: 10;
+}
+
+.map-container { 
+  height: 100% ;
+  width: 99.5%;
+}
+
+#progress-bar {
+  background: #327CCB;
+  height: 100%;
+}
+
+#progress-bar-pointer {
+  position: absolute;
+  right: -45px;
+  margin-top: -23px;
+  padding-top: 0px;
+  text-align: center;
+  height: 50px;
+  width: 45px;
+  line-height: 150%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.modal-backdrop{
+  z-index: 0;
+}
+
+.time-series-container{
+  height: 500px;
+}

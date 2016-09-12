@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MobiliCity</title>
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC3GG1bWOb8u2eCEteiCY1yGnaKrqgW6R4">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js">
+    </script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script type='text/javascript' src='lib/h-map.js'></script>
+    <script type='text/javascript' src='lib/h-gmap.js'></script>
+    <script type="text/javascript" src="js/index.js">
+    </script>
+  </head>
+  <body>
+    <div class="floating-header">
+      <span class="title"> Mobilicity</span>
+      <input id="animation-control" type="checkbox" checked data-toggle="toggle" data-on="<i class='fa fa-play'></i> Play" data-off="<i class='fa fa-pause'></i> Pause">
+    </div>
+    <div class="principal-container">
+      <div id="progress-bar-control" class="progress-bar-container">
+        <div id="progress-bar"> </div>
+        <div id="progress-bar-pointer">
+          <img src="img/twittericon.png" class='img-responsive' onclick="show_activity()">
+        </div>
+      </div>
+      <div id="map-canvas" class="map-container">
+      </div>
+    </div>
+  </body>
+</html>
