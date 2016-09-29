@@ -1,5 +1,5 @@
 /*
-Basado en 
+Basado en
 http://www.crimeheatmap.ca/2014
 //http://heatmapdemo.alastair.is/js/map/heatmaplayer.js
 //http://eightmedia.github.io/hammer.js/
@@ -10,9 +10,9 @@ var DAY_IN_MILLI = 1000 * 60 * 60 * 24;
 
 var MobilityCityAnimator = function(mapContainer,data){
   this.mapOptions =  {
-    zoom: 13,
-    center: new google.maps.LatLng(-0.182044, -78.49),
-    //center: new google.maps.LatLng(-0.187280, -78.471339),
+    zoom: 7,
+    // center: new google.maps.LatLng(-0.182044, -78.49),
+    center: new google.maps.LatLng(-1.753329,-80.6371001),
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     disableDefaultUI: true,
     scrollwheel: true,
@@ -57,7 +57,7 @@ var MobilityCityAnimator = function(mapContainer,data){
 
     this.visibleLifespan = this.visibleLifespan * HOUR_IN_MILLI;
 
-  this.lowIndex = 0; 
+  this.lowIndex = 0;
   this.highIndex = 0;
 
   var $animationControlButton = $('#animation-control');
@@ -71,7 +71,7 @@ var MobilityCityAnimator = function(mapContainer,data){
     if(me.isPaused)
       me.drawFrame(self.currentDate);
   });
-  
+
   google.maps.event.addListener(this.map, 'zoom_changed', function() {
     var radiusMultiplier, zoom = me.map.getZoom();
     if(zoom > 10)
@@ -94,7 +94,7 @@ MobilityCityAnimator.prototype.setupControlProgress = function(){
   var $document = $(document);
   this.progressBarStartPosition = 0;
   this.progressBarEndPosition = $document.width() - this.progressBarStartPosition;
-  
+
   //this.$progressBar.css('width',this.progressBarStartPosition + 'px');
   //this.$progressBar.css('aria-valuenow',this.progressBarStartPosition);
   this.totalTimeRange = this.dateRange.end - this.dateRange.start;
@@ -236,30 +236,30 @@ MobilityCityAnimator.prototype.getCurrentHeatmapData = function (lowIndex, highI
 };
 
 function getData(url){
-  var tweets = [];
+  var calls = [];
 
   $.getJSON(url,function(response){
-    
-    var docs = response.tweets;
-    for(var i in docs){
-      var location = docs[i].coordinates;
-      tweets.push({
+
+    var call = response.calls;
+    for(var i in call){
+      var location = call[i].coordinates;
+      calls.push({
         lat: location.latitud,
         lng: location.longitud,
-        created_at: getTimeStamp(docs[i].created_at),
+        created_at: getTimeStamp(call[i].created_at),
       });
     }
 
-    mobilityCityAnimator = new MobilityCityAnimator(document.getElementById("map-canvas"),tweets);
+    mobilityCityAnimator = new MobilityCityAnimator(document.getElementById("map-canvas"),calls);
 
-    google.maps.event.addListenerOnce(mobilityCityAnimator.map, 
-        'idle', 
+    google.maps.event.addListenerOnce(mobilityCityAnimator.map,
+        'idle',
         function() {
           //wait a bit for the user to get use to the map before we blow their mind with the animation
           window.setTimeout(
             function() {
               mobilityCityAnimator.start();
-            }, 
+            },
           1000);
         }
       )
@@ -270,7 +270,7 @@ function getTimeStamp(date_str){
   var now = new Date();
   var localOffset = now.getTimezoneOffset()*60000;//offset en mseg
   var date = new Date(Date.parse(date_str)).getTime()//obtiene el tiempo en mseg
- 
+
   return date + localOffset;
 }
 
@@ -282,7 +282,7 @@ function init(){
     window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
     function(fn) {return setTimeout(fn, 1000 / 60);};
 
-  getData("files/ecuador_terremoto.json");
+  getData("files/dataexample.json");
 
 }
 
@@ -294,7 +294,7 @@ function show_activity(){
 function draw_activity(){
   var ctx = document.getElementById("canvas_time_series")
 
-  var options = { 
+  var options = {
     responsive: true,
     mouseWheelZoomEnabled : true,
     pointDotRadius: 10,
@@ -317,7 +317,7 @@ function draw_activity(){
       data: [12, 19, 3, 5, 2, 3]
     }]
   };
-  
+
   var MyNewChart = new Chart(ctx,data,options);
 }
 
